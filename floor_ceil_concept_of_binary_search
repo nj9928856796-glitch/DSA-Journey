@@ -1,0 +1,49 @@
+public class FloorAndCeil {
+
+    /*
+     * Floor = largest element <= target
+     * Ceil  = smallest element >= target
+     *
+     * Time Complexity: O(log n)
+     * Space Complexity: O(1)
+     */
+
+    public static int[] findFloorAndCeil(int[] arr, int target) {
+
+        int st = 0;
+        int end = arr.length - 1;
+
+        int floor = -1;
+        int ceil = -1;
+
+        while (st <= end) {
+
+            int mid = st + (end - st) / 2;
+
+            // Find Floor
+            if (arr[mid] <= target) {
+                floor = arr[mid];
+                st = mid + 1;
+            }
+
+            // Find Ceil
+            if (arr[mid] >= target) {
+                ceil = arr[mid];
+                end = mid - 1;
+            }
+        }
+
+        return new int[]{floor, ceil};
+    }
+
+    public static void main(String[] args) {
+
+        int[] arr = {1, 2, 4, 6, 8, 10};
+        int target = 5;
+
+        int[] result = findFloorAndCeil(arr, target);
+
+        System.out.println("Floor = " + result[0]);
+        System.out.println("Ceil = " + result[1]);
+    }
+}
