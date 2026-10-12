@@ -1,0 +1,15 @@
+class Solution {
+    public int findKRotation(ArrayList<Integer> nums) {
+     int st = 0;
+     int end = nums.size()-1;
+     while(st<end){
+        int mid  = st + (end-st)/2;
+        if(nums.get(mid)>nums.get(end)){
+            st = mid+1;
+        }else{
+            end = mid;
+        }
+     }
+     return st;
+    }
+}
